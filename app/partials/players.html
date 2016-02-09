@@ -1,0 +1,31 @@
+<div class="row" ng-controller="BasketballAppController as bbCtrl">
+	<div id="search-bar" class="row">
+		<label>Search: <input ng-model="searchPlayer"></label>
+	</div>
+
+	<div id="sort">
+		<button id="revert" ng-click="bbCtrl.orderSort()" ng-show="bbCtrl.sorted">Revert Sort</button>
+		<button id="order" ng-click="bbCtrl.orderSort()" ng-hide="bbCtrl.sorted">Order Sort</button>
+		<button id="reverse" ng-click="bbCtrl.reverseSort()" ng-hide="bbCtrl.sorted">Reverse Sort</button>
+	</div>
+
+	<ul class="list-unstyled col-sm-8">
+		<li ng-repeat="player in bbCtrl.players | filter:searchPlayer">
+			<div class="container">
+				<span ng-show="player.images.length" class="col-md-6">
+					<img ng-src="{{player.images[0]}}" class="img-thumbnail player-pic">
+				</span>
+
+				<h3>{{player.first}} {{player.last}}</h3>
+					<div class="container">
+						<ul class="row card">
+							<p>Position: {{player.position}}</p>
+							<p>Height: {{player.height}}</p>
+							<p>Year: {{player.year}}</p>
+							<p>Total Points: {{player.points}}</p>
+						</ul>
+					</div>
+			</div>
+		</li>
+	</ul> 
+</div>
